@@ -1,0 +1,37 @@
+﻿@model LoginViewModel
+
+@{
+    ViewData["Title"] = "Авторизация";
+}
+
+
+<div class="block-center-100p">
+    <div class="block-ws">
+        <h2 class="text-center">Авторизация</h2>
+
+        <form asp-action="Login" asp-controller="Account">
+            <div class="form-group">
+                <label asp-for="UserName" class="control-label">Логин</label>
+                <input type="text" asp-for="UserName" class="form-control" placeholder="Введите логин" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Password" class="control-label">Пароль</label>
+                <input type="password" asp-for="Password" class="form-control" placeholder="Введите пароль" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <div class="form-group text-danger" asp-validation-summary="ModelOnly"></div>
+
+            <div class="form-group">
+                <input type="submit" value="Войти" class="btn btn-primary btn-lg btn-block login-button" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts{
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

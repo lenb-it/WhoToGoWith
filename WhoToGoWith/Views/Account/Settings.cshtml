@@ -1,0 +1,52 @@
+﻿@model SettingsViewModel
+@{
+    ViewData["Title"] = "Настройки";
+}
+<div class="block__addEvent">
+    <div class="container-addEvent">
+        <div class="addEvent-form">
+            <form method="post" asp-action="Settings" asp-controller="Account" enctype="multipart/form-data">
+                <h3 class="text-center">Настройки</h3>
+                <div class="form-items">
+                    <div class="addEvent-item">
+                        <label asp-for="AboutMe" class="control-label">О себе</label>
+                        <textarea type="text" asp-for="AboutMe" class="form-control-textarea form-control"
+                                  placeholder="Введите информацию про себя"></textarea>
+                        <span asp-validation-for="AboutMe" class="text-danger"></span>
+                    </div>
+
+                    <div class="addEvent-item">
+                        <label asp-for="Password" class="control-label">Введите пароль</label>
+                        <input type="password" asp-for="Password" class="form-control"
+                               placeholder="Введите пароль">
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+
+                    <div class="addEvent-item">
+                        <label asp-for="ConfirmPassword" class="control-label">Повторите пароль</label>
+                        <input type="password" asp-for="ConfirmPassword" class="form-control"
+                               placeholder="Повторите пароль">
+                        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                    </div>
+
+                    <div class="addEvent-item">
+                        <label asp-for="Avatar" class="control-label">Выберите вашу аватарку</label>
+                        <input type="file" asp-for="Avatar" class="form-control-file form-control">
+                        <p class="text-info">*Только файлы  формата .png и .jpg.</p>
+                        <span asp-validation-for="Avatar" class="text-danger"></span>
+                    </div>
+
+                    <div asp-validation-summary="ModelOnly" class="text-danger validation"></div>
+
+                    <div class="addEvent-item">
+                        <input type="submit" value="Создать" class="btn btn-primary fs-16" />
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

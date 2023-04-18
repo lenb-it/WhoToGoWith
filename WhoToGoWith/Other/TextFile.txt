@@ -1,0 +1,76 @@
+﻿_dbContext.Users.AddRange(
+	new User
+	{
+		UserName = "Ragnar",
+		Password = "12341234",
+		AboutMe = $"Привет, меня зовут Ragnar."
+	},
+	new User
+	{
+		UserName = "Pudge",
+		Password = "123123123",
+		AboutMe = $"Привет, меня зовут Pudge."
+	},
+	new User
+	{
+		UserName = "s1mple",
+		Password = "12121212",
+		AboutMe = $"Привет, меня зовут s1mple."
+	},
+	new User
+	{
+		UserName = "Clown",
+		Password = "12345123",
+		AboutMe = $"Привет, меня зовут Clown."
+	}
+);
+
+
+_dbContext.Events.AddRange(
+	new Event
+	{
+		City = "Барановичи",
+		Date = DateTime.Now,
+		Title = "Бокс",
+		MaxCountPeople = 2,
+		Information = "Спаринги",
+		UserName = "Ragnar"
+	},
+	new Event
+	{
+		City = "Барановичи",
+		Date = DateTime.Now,
+		Title = "Мафия",
+		MaxCountPeople = 15,
+		Information = "Поиграем в мафию",
+		UserName = "Clown"
+	},
+	new Event
+	{
+		City = "Барановичи",
+		Date = DateTime.Now,
+		Title = "Го тусить в Extra",
+		Information = "в 19.00 тусим в Extra",
+		UserName = "Pudge"
+	}
+);
+_dbContext.SaveChanges();
+
+_dbContext.ReadyForEvents.AddRange(
+	new ReadyForEvent
+	{
+		UserName = "s1mple",
+		EventId = 1
+	},
+	new ReadyForEvent
+	{
+		UserName = "Pudge",
+		EventId = 2
+	},
+	new ReadyForEvent
+	{
+		UserName = "s1mple",
+		EventId = 3
+	}
+);
+_dbContext.SaveChanges();

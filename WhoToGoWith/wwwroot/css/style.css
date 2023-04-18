@@ -1,0 +1,258 @@
+﻿.col-10-me {
+    -ms-flex: 1 0 300px;
+    flex: 1 0 300px;
+}
+
+.block-center-100p {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 100%;
+}
+
+.block-ws {
+    max-width: 250px;
+    min-width: 250px;
+}
+
+/*---------Event---------*/
+
+.block__event,
+.block__settings-event,{
+    display: flex;
+    justify-content: center;
+}
+
+.block__aboutMe {
+    display: flex;
+    flex-direction: column;
+}
+
+.content__aboutMe {
+    border: 1px solid #000;
+    border-radius: 10px;
+    box-shadow: 1px 1px 5px #333;
+    padding: 15px;
+    margin-top: 10px;   
+    min-width: 100%;
+}
+
+.block__event {
+    min-width: 100%;
+    margin-top: 25px;
+}
+
+.event-city {
+    display: inline-block;
+    margin: 0 0 6px 10px;
+    font-style: italic;
+}
+
+.event__information::first-letter {
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+.event-content {
+    border: 1px solid #000;
+    border-radius: 10px;
+    box-shadow: 1px 1px 10px #333;
+    padding: 20px; 
+    min-width: 100%;
+}
+
+.event-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.event-author {
+    font-style: italic;
+}
+
+.event-date {
+    display: flex;
+    align-items: center;
+}
+
+span .date {
+    text-decoration: underline;
+}
+
+.block_event-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.block__settings-event {
+    margin-bottom: 10px;
+}
+
+input.search-inp {
+    width: 100%;
+}
+
+input.search-inp:focus {
+    outline: none;
+}
+
+.search-inp {
+    max-height: 33.5px;
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid #000;
+}
+
+.search-city {
+    align-items: flex-end;
+    display: flex;
+    width: 100%;
+}
+
+.block__type-event {
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+}
+
+.type-event {
+    width: 100%;
+}
+
+.event__countReady {
+    font-size: 14px;
+    text-decoration: initial;
+    margin-bottom: 5px;
+}
+
+.block__event-countReady {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.content-event {
+    display: flex;
+    flex-direction: column;
+}
+
+.container-addEvent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.block__addEvent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.addEvent-form {
+    border: 2px solid #000;
+    border-radius: 10px;
+    padding: 10px;
+    min-width: 300px;
+}
+
+.addEvent-item {
+    margin-top: 10px;
+}
+
+.form-control-textarea {
+    display: block;
+    width: 100%;
+    height: 150px;
+    max-height: 350px;
+    min-height: 100px;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #495057;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.addEvent-item input {
+    width: 100%;
+    font-size: 16px;
+    padding: 3px;
+}
+
+.form-items {
+    display: flex;
+    flex-direction: column;
+}
+
+.fs-16 input {
+    font-size: 16px;
+}
+
+.avatarAndUserName {
+    display: flex;
+}
+
+.avatar {
+    max-width: 300px;
+    max-height: 250px;
+    min-width: 200px;
+    min-height: 200px;
+    display: block;
+    border-radius:20px;
+}
+
+.userNameFromProfile {
+    margin-left: 20px;
+}
+
+
+
+
+
+
+
+
+
+@media (min-width: 605px) {
+    .addEvent-form {
+        min-width: 550px;
+    }
+}
+
+@media (max-width: 576px) {
+    .search-inp {
+        margin: 7px 0;
+    }
+}
+
+@media (max-width: 470px) {
+    .event-header {
+        flex-direction: column;
+    }
+    .block__event-author {
+        margin-left: 10px;
+    }
+    .event__information {
+        text-align: justify;
+    }
+    .event-content {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 375px) {
+    .event-date {
+        margin-bottom: 5px;
+    }
+}
+
+@media (max-width: 764px) {
+    .event__countReady {
+        font-size: 12.5px;
+    }
+}

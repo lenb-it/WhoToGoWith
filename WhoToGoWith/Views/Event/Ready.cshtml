@@ -1,0 +1,58 @@
+﻿@model LeaveTheEventViewModel
+
+@{
+    ViewData["Title"] = "Участие в событиях";
+}
+<div class="content-event">
+    @if (Model.Events.Count < 1)
+    {
+        <h2 class="text-center mt-3">В данный момент вы нигде не участвуете</h2>
+    }
+    else
+    {
+        <h2 class="text-center mt-3">Вы принимаете участие в следующих событиях</h2>
+
+        @for (var i = 0; i < Model.Events.Count; ++i)
+        {
+            <div class="block__event">
+                <div class="event-content">
+                    <div class="event-header">
+                        <h3>@Model.Events[i].Title</h3>
+                        <div class="block__event-author">
+                            Автор: <a class="event-author" asp-controller="Account"
+                                      asp-action="Profile" asp-route-id="@Model.Events[i].UserName">@Model.Events[i].UserName</a>
+                        </div>
+                    </div>
+
+                    <div class="event-city">
+                        г. @Model.Events[i].City.
+                    </div>
+
+                    <div class="event__information">
+                        @Model.Events[i].Information
+                    </div>
+
+                    <div class="block__event-countReady">
+                        @if (Model.Events[i].MaxCountPeople > 0)
+                        {
+                            <div class="event__countReady">
+                                Участников: @Model.CountReadyToEvent[i]/@Model.Events[i].MaxCountPeople.
+                            </div>
+                        }
+                    </div>
+
+                    <div class="block_event-footer">
+                        <div class="event-date">
+                            <span class="date">@Model.Events[i].Date.ToString("f")</span>
+                        </div>
+                        <div class="event-button">
+                            <a type="submit" asp-action="LeaveTheEvent" asp-controller="Event"
+                                asp-route-id="@Model.Events[i].Id" class="btn btn-danger">Отписаться</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+
+</div>

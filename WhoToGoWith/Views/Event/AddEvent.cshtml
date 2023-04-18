@@ -1,0 +1,57 @@
+﻿@model AddEventViewModel
+@{
+    ViewData["Title"] = "Добавление события";
+}
+<div class="block__addEvent">
+    <div class="container-addEvent">
+        <div class="addEvent-form">
+            <form method="post" asp-action="AddEvent" asp-controller="Event">
+                <h3 class="text-center">Создание события</h3>
+                <div class="form-items">
+                    <div class="addEvent-item">
+                        <label asp-for="Title" class="control-label">Название</label>
+                        <input type="text" asp-for="Title" class="form-control" placeholder="Введите название" />
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+
+                    <div class="addEvent-item">
+                        <label asp-for="Information" class="control-label">Информация</label>
+                        <textarea type="text" asp-for="Information" class="form-control-textarea form-control"
+                                  placeholder="Введите информации о событии"></textarea>
+                        <span asp-validation-for="Information" class="text-danger"></span>
+                    </div>
+
+                    <div class="addEvent-item">
+                        <label asp-for="MaxCountPeople" class="control-label">Максимальное количество участников</label>
+                        <input type="number" asp-for="MaxCountPeople" class="form-control" placeholder="Введите количество участников" />
+                        <p class="text-info">*Если ограничение участников не требуются поставьте 0 или не заполняйте поле</p>
+                        <span asp-validation-for="MaxCountPeople" class="text-danger"></span>
+                    </div>
+
+                    <div class="addEvent-item">
+                        <label asp-for="Date" class="control-label">Дата проведения</label>
+                        <input type="datetime-local" asp-for="Date" class="form-control" placeholder="Введите дату события" />
+                        <p class="text-info">*Дату можно устанавливать как минимум на 1 час вперед</p>
+                        <span asp-validation-for="Date" class="text-danger"></span>
+                    </div>
+
+                    <div class="addEvent-item">
+                        <label asp-for="City" class="control-label">Город</label>
+                        <input type="text" asp-for="City" class="form-control" placeholder="Введите город" />
+                        <span asp-validation-for="City" class="text-danger"></span>
+                    </div>
+
+                    <div asp-validation-summary="ModelOnly" class="text-danger validation"></div>
+
+                    <div class="addEvent-item">
+                        <input type="submit" value="Создать" class="btn btn-primary fs-16" />
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

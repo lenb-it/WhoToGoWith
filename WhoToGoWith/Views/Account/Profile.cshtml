@@ -1,0 +1,89 @@
+﻿@model ProfileViewModel
+
+@{ 
+    ViewData["Title"] = @Model.User.UserName;
+}
+<div class="avatarAndUserName">
+    @if (Model.User.Avatar is null)
+    {
+        <img class="avatar" src="~/img/userWithoutWithPfoto/default.png" />
+    }
+    else
+    {
+        <img class="avatar" src="data:image/jpeg;base64,@(Convert.ToBase64String(Model.User.Avatar))" />
+    }
+    <h2 class="userNameFromProfile">@Model.User.UserName</h2>
+</div>
+
+
+<div class="block__aboutMe">
+    <div class="content__aboutMe">
+        @Model.User.AboutMe
+    </div>
+    @if (Model.Events.Count < 0)
+    {
+        <h4 class="text-center mt-4">У пользователя нет запланированных мероприятий</h4>
+    }
+    else
+    {
+        <h4 class="text-center mt-4">Предстоящие события пользователя</h4>
+        for (var i = 0; i < Model.Events.Count; ++i)
+        {
+            <div class="block__event">
+                <div class="event-content">
+                    <div class="event-header">
+                        <h3>@Model.Events[i].Title</h3>
+                    </div>
+
+                    <div class="event-city">
+                        г. @Model.Events[i].City
+                    </div>
+
+                    <div class="event__information">
+                        @Model.Events[i].Information
+                    </div>
+
+
+                    @if (User.Identity.Name == Model.Events[i].UserName)
+                    {
+                        <div class="block__event-countReady">
+                            @if (Model.Events[i].MaxCountPeople > 0)
+                            {
+                                <div class="event__countReady">
+                                    Участников: @Model.CountReadyToEvent[i]/@Model.Events[i].MaxCountPeople.
+                                </div>
+                            }
+                        </div>
+
+                        <div class="block_event-footer">
+                            <div class="event-date">
+                                <span class="date">@Model.Events[i].Date.ToString("f")</span>
+                            </div>
+                            <div class="event-button">
+                                <a type="submit" asp-action="DeleteEvent" asp-controller="Event"
+                                    asp-route-id="@Model.Events[i].Id" class="btn btn-danger">Удалить</a>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="block_event-footer">
+                            <div class="event-date">
+                                <span class="date">@Model.Events[i].Date.ToString("f")</span>
+                            </div>
+                            <div class="block__event-countReady">
+                                @if (Model.Events[i].MaxCountPeople > 0)
+                                {
+                                    <div class="event__countReady">
+                                        Участников: @Model.CountReadyToEvent[i]/@Model.Events[i].MaxCountPeople.
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+    }
+
+</div>

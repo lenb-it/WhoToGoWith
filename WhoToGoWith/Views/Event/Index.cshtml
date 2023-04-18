@@ -1,0 +1,61 @@
+﻿@model EventViewModel
+
+@{
+    ViewData["Title"] = "События";
+}
+<div class="content-event">
+    <div class="block__settings-event">
+        <form asp-action="Index" asp-controller="Event" method="post" class="search-city">
+            <input type="search" class="search-inp" placeholder="Введите город" asp-for="SearchCity">
+            <input type="submit" value="Поиск" class="btn btn-primary text-light my-2 my-sm-0" />
+        </form>
+    </div>
+
+    <div>
+        <div>
+            <a asp-controller="Event" asp-action="AddEvent" class="btn btn-primary">Добавить событие</a>
+        </div>
+    </div>
+
+    @for (var i = 0; i < Model.Events.Count; ++i)
+    {
+        <div class="block__event">
+            <div class="event-content">
+                <div class="event-header">
+                    <h3>@Model.Events[i].Title</h3>
+                    <div class="block__event-author">
+                        Автор: <a class="event-author" asp-controller="Account"
+                                  asp-action="Profile" asp-route-id="@Model.Events[i].UserName">@Model.Events[i].UserName</a>
+                     </div>
+                </div>
+
+                <div class="event-city">
+                    г. @Model.Events[i].City.
+                </div>
+
+                <div class="event__information">
+                    @Model.Events[i].Information
+                </div>
+
+                <div class="block__event-countReady">
+                    @if (Model.Events[i].MaxCountPeople > 0)
+                    {
+                        <div class="event__countReady">
+                            Участников: @Model.CountReadyToEvent[i]/@Model.Events[i].MaxCountPeople.
+                        </div>
+                    }
+                </div>
+
+                <div class="block_event-footer">
+                    <div class="event-date">
+                        <span class="date">@Model.Events[i].Date.ToString("f")</span>
+                    </div>
+                    <div class="event-button">
+                        <a type="submit" asp-action="ReadyToEvent" asp-controller="Event"
+                            asp-route-id="@Model.Events[i].Id" class="btn btn-primary">Участвовать</a>
+                    </div>
+                </div>
+            </div>
+         </div>
+     }
+</div>
